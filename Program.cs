@@ -8,18 +8,31 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            int i = 0;
             while (true)
             {
-                try
+                i++;
+                if (i < 5)
                 {
-                    Browser_job();
-                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                    try
+                    {
+                        Browser_job();
+                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                    }
+                    catch (Exception)
+                    {
+                        System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
+                        //jak błąd czekamy 5 minut
+                    }
                 }
-                catch (Exception)
+                else
                 {
+                    i = 0;
                     System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
                     //jak zbanują czekamy 5 minut
                 }
+
+
 
             }
 
