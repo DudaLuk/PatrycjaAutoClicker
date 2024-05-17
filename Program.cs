@@ -21,15 +21,19 @@ namespace ConsoleApp1
                     }
                     catch (Exception)
                     {
+                        Console.WriteLine("error czekam 5 minut ");
                         System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
                         //jak błąd czekamy 5 minut
+
                     }
                 }
                 else
                 {
                     i = 0;
+                    Console.WriteLine($"enter sleep next run {DateTime.Now.AddMinutes(5)}");
                     System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
                     //jak zbanują czekamy 5 minut
+
                 }
 
 
