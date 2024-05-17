@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+
+
 
 namespace ConsoleApp1
 {
@@ -8,7 +9,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             // Inicjalizacja przeglądarki Chrome
-            IWebDriver driver = new ChromeDriver();
+            IWebDriver driver = new OpenQA.Selenium.Edge.EdgeDriver();
 
             try
             {
