@@ -14,16 +14,17 @@ namespace ConsoleApp1
             try
             {
                 // Przejdź do strony Google
-                driver.Navigate().GoToUrl("https://www.google.pl");
+                driver.Navigate().GoToUrl("https://www.shecodes.io/contests/urban-garden-challenge/contest_entries/patrycja-oosthuizen-polish-b3d6f284-7841-4f83-869e-66fac50854fd/preview");
 
                 // Znajdź pole wyszukiwania
-                IWebElement searchBox = driver.FindElement(By.Name("q"));
-
+                //IWebElement searchBox = driver.FindElement(By.Name("q"));
+                IWebElement webElement = driver.FindElement(By.ClassName("btn-secondary"));
+                webElement.Click();
                 // Wpisz zapytanie do pola wyszukiwania
-                searchBox.SendKeys("Selenium WebDriver");
+                //searchBox.SendKeys("Selenium WebDriver");
 
                 // Znajdź przycisk "Szukaj" i kliknij go
-                searchBox.Submit();
+                //searchBox.Submit();
 
                 // Czekaj kilka sekund, aby zobaczyć wyniki (opcjonalnie)
                 System.Threading.Thread.Sleep(5000);
