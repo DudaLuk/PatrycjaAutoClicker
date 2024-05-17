@@ -10,8 +10,16 @@ namespace ConsoleApp1
         {
             while (true)
             {
-                Browser_job();
-                System.Threading.Thread.Sleep(TimeSpan.FromMinutes(1));
+                try
+                {
+                    Browser_job();
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                }
+                catch (Exception)
+                {
+                    System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
+                    //jak zbanują czekamy 5 minut
+                }
 
             }
 
