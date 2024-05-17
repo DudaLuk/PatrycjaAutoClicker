@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
+using System.Diagnostics;
 
 
 
@@ -23,7 +24,7 @@ namespace ConsoleApp1
                     catch (Exception)
                     {
                         Console.WriteLine("error czekam 5 minut ");
-                        System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
+                        System.Threading.Thread.Sleep(TimeSpan.FromMinutes(7));
                         //jak błąd czekamy 5 minut
 
                     }
@@ -32,16 +33,26 @@ namespace ConsoleApp1
                 {
                     i = 0;
                     Console.WriteLine($"enter sleep next run {DateTime.Now.AddMinutes(5)}");
-                    System.Threading.Thread.Sleep(TimeSpan.FromMinutes(5));
+                    System.Threading.Thread.Sleep(TimeSpan.FromMinutes(7));
                     //jak zbanują czekamy 5 minut
-
+                    RestartApplication();
                 }
 
 
 
             }
 
+            static void RestartApplication()
+            {
+                // Pobierz ścieżkę do bieżącego procesu
+                string exePath = Process.GetCurrentProcess().MainModule.FileName;
 
+                // Uruchom nową instancję aplikacji
+                Process.Start(exePath);
+
+                // Zamknij bieżącą instancję aplikacji
+                Environment.Exit(0);
+            }
 
             static void Browser_job()
             {
@@ -78,6 +89,7 @@ namespace ConsoleApp1
                 }
                 finally
                 {
+                    driver.Manage().Cookies.DeleteAllCookies(); driver.Manage().Cookies.DeleteAllCookies(); driver.Manage().Cookies.DeleteAllCookies(); driver.Manage().Cookies.DeleteAllCookies();
                     // Zamknij przeglądarkę
                     driver.Quit();
                 }
