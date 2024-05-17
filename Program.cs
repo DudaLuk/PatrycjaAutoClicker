@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 
 
 
@@ -44,8 +45,14 @@ namespace ConsoleApp1
 
             static void Browser_job()
             {
+                var options = new EdgeOptions();
+                options.AddArgument("inprivate"); // Tryb incognito w Edge
+
                 // Inicjalizacja przeglądarki Chrome
-                IWebDriver driver = new OpenQA.Selenium.Edge.EdgeDriver();
+                IWebDriver driver =
+                    //new OpenQA.Selenium.Edge.EdgeDriver(options);
+                    new OpenQA.Selenium.Firefox.FirefoxDriver();
+                driver.Manage().Cookies.DeleteAllCookies();
 
                 try
                 {
